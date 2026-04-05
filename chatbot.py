@@ -2,18 +2,17 @@ import nltk
 from nltk.tokenize import word_tokenize
 import random
 
-# Make sure the tokenizer is available
-# This uses the default NLTK data path you downloaded
-nltk.data.path.append('/home/henry/nltk_data')  # Change path if your punkt is elsewhere
 
-# Define intents and keywords
+nltk.data.path.append('/home/henry/nltk_data')  
+
+
 intents = {
     "greeting": ["hello", "hi", "hey", "good morning", "good evening"],
     "farewell": ["bye", "goodbye", "see you", "later"],
     "thanks": ["thanks", "thank you", "thx"],
 }
 
-# Define responses for each intent
+
 responses = {
     "greeting": ["Hello!", "Hi there!", "Hey! How can I help you?"],
     "farewell": ["Goodbye!", "See you later!", "Bye!"],
@@ -21,7 +20,7 @@ responses = {
     "unknown": ["I don't understand.", "Can you say that differently?", "Sorry, I didn't get that."],
 }
 
-# Function to classify user input
+
 def classify_intent(user_input):
     tokens = word_tokenize(user_input.lower())
     for intent, keywords in intents.items():
@@ -29,7 +28,7 @@ def classify_intent(user_input):
             return intent
     return "unknown"
 
-# Chatbot main loop
+
 def chatbot():
     print("Chatbot is running! Type 'quit' to exit.")
     while True:
@@ -40,6 +39,6 @@ def chatbot():
         intent = classify_intent(user_input)
         print("Chatbot:", random.choice(responses[intent]))
 
-# Run chatbot
+
 if __name__ == "__main__":
     chatbot()
